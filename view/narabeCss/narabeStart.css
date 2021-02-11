@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.cover {
+	width: 8rem;
+	height: 6rem;
+	margin: 5rem auto;
+	justify-content: center;
+	align-items: center;
+}
+
+.title {
+	text-align: center;
+}
+
+.wrap {
+	width: 80%;
+	margin: 0 auto;
+}
