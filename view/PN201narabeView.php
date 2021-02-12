@@ -3,8 +3,8 @@
  * PN201narabeView.php
  * コメント
  */
-var_dump($_REQUEST);
-echo $requestID;
+// var_dump($_REQUEST);
+// echo $requestID;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -32,7 +32,7 @@ echo $requestID;
     			<?php
     			foreach( $line->getLine() as $columnKey => $box){
     			?>
-        		<div class="box" style="background-color:<?=$box->getColor();?> ;">
+        		<div class="box" style="background-color:<?=$box->getColor( $gameSetting );?> ;">
         			<a href="narabe.php?line=<?=$lineKey;?>&column=<?=$columnKey;?>&request=PN201BoardClick" <?=$box->getNoneCSS();?> >　</a>
         		</div>
         		<?php

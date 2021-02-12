@@ -16,10 +16,12 @@ if (isset($_REQUEST["line"]) && isset($_REQUEST["column"])) {
 $narabeGame = unserialize($_SESSION["narabeGame"]);
 $board = $narabeGame->getBoard();
 $turn = $narabeGame->getTurn();
+$gameSetting = $narabeGame->getGameSetting();
+$record = $narabeGame->getRecord();
 
+$record->addRecord( $columnKey, $lineKey);
 
-
-$box = $board->getBoxFromBord($lineKey, $columnKey);
+$box = $board->getBoxFromBord( $record );
 
 $box->play($turn);
 

@@ -1,19 +1,27 @@
 <?php
 /**
- * ターン情報を保持し管理をするクラス
+ * 全プレイヤーの総ターン数を保持し、管理をするクラス
  *
  * 初期値は1
  */
 class Turn{
 
-    private $turn;
+    private $count;
 
     /**
      * コンストラクタ
      *
      */
     public function __construct(){
-        $this->turn = 1;
+        $this->count = 1;
+    }
+
+    /**
+     * 総ターン数を取得する
+     *
+     */
+    public function getCount(){
+        return $this->count;
     }
 
     /**
@@ -21,30 +29,30 @@ class Turn{
      *
      */
     public function getTurn(){
-        return $this->turn;
+        $turn = ceil( $this->count / 2 );
+        return $turn;
     }
 
     /**
-     * p1のターンかどうかをBooleanで返す
+     * 誰のターンなのかをプレイヤーナンバーで返す
      *
-     * ただどちらのターンかの判定がしたいだけだが、p1を基準にBooleanで返している
      *
-     * @return $Booleanを返す
+     * @return $int
      */
     public function whichTurn(){
-        if( $this->turn % 2 != 0 ){
-            return true;
+        if( $this->count % 2 != 0 ){
+            return 1;
         } else {
-            return false;
+            return 2;
         }
     }
 
     /**
-     * ターン進行のメソッド
+     * プレイヤーターン終了のメソッド
      *
      */
     public function turnChanges(){
-        $this->turn++;
+        $this->count++;
     }
 }
 ?>

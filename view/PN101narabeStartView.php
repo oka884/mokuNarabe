@@ -4,8 +4,8 @@
  *
  * 『n目ならべ』の開始画面
  */
- var_dump($_REQUEST);
- echo $requestID;
+//  var_dump($_REQUEST);
+//  echo $requestID;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -26,10 +26,10 @@
             	<div>
             		<p>なん目ならべ？</p>
             		<select name="moku">
-                        <option value="2">二</option>
-                        <option value="3" selected>三</option>
-                        <option value="4">四</option>
-                        <option value="5">五</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
 <!--                     目数は5~11を選択できるようにする -->
                     <p>なんマス？</p>

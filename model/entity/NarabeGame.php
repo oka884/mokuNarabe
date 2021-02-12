@@ -10,6 +10,7 @@ class NarabeGame{
     private $gameSettinig;
     private $board;
     private $turn;
+    private $record;
 
     /**
      * セッター
@@ -17,11 +18,13 @@ class NarabeGame{
      * @param $gameSetting
      * @param $board
      * @param $turn
+     * @param $record
      */
-    public function setAll( $gameSetting, $board, $turn){
+    public function setAll( $gameSetting, $board, $turn, $record){
         $this->gameSettinig = $gameSetting;
         $this->board = $board;
         $this->turn =  $turn;
+        $this->record = $record;
     }
 
     /**
@@ -52,6 +55,15 @@ class NarabeGame{
     }
 
     /**
+     * recordのセッター
+     *
+     * @param $record
+     */
+    public function setRecord( $record ){
+        $this->record = $record;
+    }
+
+    /**
      * gameSettingオブジェクトを返す
      *
      */
@@ -73,6 +85,14 @@ class NarabeGame{
      */
     public function getTurn(){
         return $this->turn;
+    }
+
+    /**
+     * recordオブジェクトを返す
+     *
+     */
+    public function getRecord(){
+        return $this->record;
     }
 }
 ?>

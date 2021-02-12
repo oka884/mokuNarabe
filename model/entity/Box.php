@@ -17,15 +17,25 @@ class Box{
     }
 
     /**
+     * 保持している値を返す
+     *
+     */
+    public function getBox(){
+        return $this->box;
+    }
+
+
+    /**
      * 保持する値からカラーコードを返す
      *
+     * @param $gameSetting $ゲームセッティングオブジェクトを引数に取る
      * @return $カラーコード
      */
-    public function getColor(){
+    public function getColor( $gameSetting ){
         if( $this->box == 1 ){
-            return DefaultSetting::getP1Color();
+            return $gameSetting->getP1Color();
         } elseif( $this->box == 2 ){
-            return DefaultSetting::getP2Color();
+            return $gameSetting->getP2Color();
         } else {
             return DefaultSetting::getNotOwnedColor();
         }

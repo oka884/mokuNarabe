@@ -30,9 +30,10 @@ $gameSetting->setVictoryConditions( $victoryConditions );
 
 $board = new Board( $gameSetting );
 $turn = new Turn();
+$record = new Record();
 
 $narabeGame = new NarabeGame();
-$narabeGame->setAll( $gameSetting, $board, $turn);
+$narabeGame->setAll( $gameSetting, $board, $turn, $record);
 
 $_SESSION["narabeGame"] = serialize($narabeGame);
 
