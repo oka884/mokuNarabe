@@ -11,11 +11,15 @@ require_once ( dirname(__FILE__). "/../model/entity/propertyDefine.php");
 require_once ( dirname(__FILE__). "/../model/entity/Board.php");
 require_once ( dirname(__FILE__). "/../model/entity/Box.php");
 require_once ( dirname(__FILE__). "/../model/entity/ColorCodeDefinition.php");
+require_once ( dirname(__FILE__). "/../model/entity/Coordinate.php");
 require_once ( dirname(__FILE__). "/../model/entity/DefaultSetting.php");
 require_once ( dirname(__FILE__). "/../model/entity/GameSetting.php");
 require_once ( dirname(__FILE__). "/../model/entity/Line.php");
 require_once ( dirname(__FILE__). "/../model/entity/NarabeGame.php");
+require_once ( dirname(__FILE__). "/../model/entity/Line.php");
+require_once ( dirname(__FILE__). "/../model/entity/Record.php");
 require_once ( dirname(__FILE__). "/../model/entity/Turn.php");
+
 
 // 完了フラグ
 $complete = false;

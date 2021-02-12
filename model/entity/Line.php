@@ -10,13 +10,15 @@ class Line{
 
     /**
      * コンストラクタ
-     *
-     * @param $gameSetting GameSettingオブジェクトを引数に取る
+     * 
+     * @param $lineKey
+     * @param $gameSetting
      */
-    public function __construct( $gameSetting ){
+    public function __construct( $lineKey, $gameSetting )
+    {
         $this->line = array();
         for( $i = 0 ; $i < $gameSetting->getSquareNumber() ; $i++ ){
-            $this->line[] = new Box();
+            $this->line[] = new Box( $i, $lineKey );
         }
     }
 
@@ -25,7 +27,8 @@ class Line{
      *
      * @return $line配列
      */
-    public function getLine(){
+    public function getLine()
+    {
         return $this->line;
     }
 }

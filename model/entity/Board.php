@@ -12,11 +12,14 @@ class Board{
      * コンストラクタ
      *
      * GameSettingオブジェクトを引数に取る
+     * @param $gameSetting
      */
-    public function __construct( $gameSetting ){
+    public function __construct( $gameSetting )
+    {
         $this->board = array();
         for( $i = 0 ; $i < $gameSetting->getSquareNumber() ; $i++ ){
-            $this->board[] = new Line( $gameSetting );
+            // 行数とgameSettingを与えてLineを作る
+            $this->board[] = new Line( $i, $gameSetting );
         }
     }
 
@@ -25,21 +28,37 @@ class Board{
      *
      * @return $board配列
      */
-    public function getBord(){
+    public function getBord()
+    {
         return $this->board;
     }
 
     /**
-     * 座標からboxを取得する
+     * 座標オブジェクトからboxを取得する
      *
-     * @param $lineKey $行の座標
-     * @param $columnKey $列の座標
+     * @param $coordinate
      * @return $boxオブジェクト
      */
-    public function getBoxFromBord($lineKey, $columnKey){
-        $line = $this->board[$lineKey];
-        $box = $line->getLine()[$columnKey];
+    public function getBox( $coordinate )
+    {
+        $line = $this->board[ $coordinate->getY() ];
+        $box = $line->getLine()[ $coordinate->getX() ];
         return $box;
+    }
+
+    /**
+     * 座標からboxオブジェクトが持つ座標オブジェクトを返す
+     * 
+     * @param $columnKey
+     * @param $lineKey
+     * @return $coordinate
+     */
+    public function getCoordinate( $columnKey, $lineKey )
+    {
+        $line = $this->board[ $lineKey ];
+        $box = $line->getLine()[ $columnKey ];
+        $coordinate = $box->getCoordinate();
+        return $coordinate;
     }
 }
 ?>

@@ -1,65 +1,53 @@
 <?php
+
 /**
  * プレイヤーの行動を記録するクラス
  *
- *
+ * 座標オブジェクトを配列で保持する
  */
-class Record{
+class Record
+{
 
-    private $x;
-    private $y;
-
-    public function __construct(){
-        $this->x = array();
-        $this->y = array();
-    }
+    private $record;
 
     /**
-     * 盤面の横と縦の行をセットする
+     * コンストラクタ
      *
-     * @param $columnKey
-     * @param $lineKey
      */
-    public function addRecord( $columnKey, $lineKey){
-        $this->x[] = $columnKey;
-        $this->y[] = $lineKey;
+    public function __construct()
+    {
+        $this->record = array();
     }
 
     /**
-     * 最後の行動のx座標を返す
+     * 配列の最後にcoodinateオブジェクトを追加する
+     *
+     * @param $coordinate
+     */
+    public function addRecord( $coordinate )
+    {
+        $this->record[] = $coordinate;
+    }
+
+    /**
+     * 最後の行動の座標オブジェクトを返す
      *
      * @return $columnKey;
      */
-    public function getLastXRecord(){
-        return $this->x[ array_key_last( $this->x) ];
+    public function getLastRecord()
+    {
+        $coordinate = $this->record[array_key_last($this->record)];
+        return $coordinate;
     }
 
     /**
-     * 最後の行動のy座標を返す
+     * レコード配列そのものを返す
      *
-     * @return $lineKey
+     * @return $record
      */
-    public function getLastYRecord(){
-        return $this->y[ array_key_last( $this->y ) ];
-    }
-
-    /**
-     * x座標の配列を返す
-     *
-     * @return $xArray
-     */
-    public function getX(){
-        return $this->x;
-    }
-
-    /**
-     * y座標の配列を返す
-     *
-     * @return $yArray
-     */
-    public function getY(){
-        return $this->y;
+    public function getRecord()
+    {
+        return $this->record;
     }
 
 }
-?>

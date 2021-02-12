@@ -93,7 +93,8 @@ class GameSetting{
         $ok = is_numeric( $squareNumber );
         // 盤面の最小最大値の範囲内であることの確認（三項演算子を使っている）
         if( $ok ){
-            $ok = $squareNumber >= DefaultSetting::getMinSquareNumber() && $getSquareNumber <= DefaultSetting::getMaxSquareNumber() ? true : false ;
+            $ok = $squareNumber >= DefaultSetting::getMinSquareNumber() ? true : false ; 
+            $ok = $getSquareNumber <= DefaultSetting::getMaxSquareNumber() ? true : false ;
         }
         if( $ok ){
             $this->squareNumber = $squareNumber;
@@ -114,7 +115,8 @@ class GameSetting{
         $ok = is_numeric( $victoryConditions );
         // 勝利条件のの最小最大値の範囲内であることの確認（三項演算子を使っている）
         if( $ok ){
-            $ok = $victoryConditions >= DefaultSetting::getMinVictoryConditions() && $victoryConditions <= DefaultSetting::getMaxVictoryConditions() ? true : false;
+            $ok = $victoryConditions >= DefaultSetting::getMinVictoryConditions() ? true : false;
+            $ok = $victoryConditions <= DefaultSetting::getMaxVictoryConditions() ? true : false;
         }
         if( $ok ){
             $this->victoryConditions = $victoryConditions;

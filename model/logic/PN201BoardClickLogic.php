@@ -14,19 +14,26 @@ if (isset($_REQUEST["line"]) && isset($_REQUEST["column"])) {
 }
 
 $narabeGame = unserialize($_SESSION["narabeGame"]);
+
+// narabeGameから中のものを取り出しているが本来これはいらない
 $board = $narabeGame->getBoard();
 $turn = $narabeGame->getTurn();
 $gameSetting = $narabeGame->getGameSetting();
 $record = $narabeGame->getRecord();
 
-$record->addRecord( $columnKey, $lineKey);
+// プレイヤーの入力を検査し、正しければボックスが持つ座標オブジェクトを返させている
+$coordinate = $narabeGame->checkAndGetCoodinate( $columnKey, $lineKey );
 
-$box = $board->getBoxFromBord( $record );
+if ( $coordinate ){
+    $record->addRecord( $coordinate );
 
-$box->play($turn);
+    $box = $board->getBox( $coordinate );
+
+    $box->play($turn);
+}
+
+
 
 $_SESSION["narabeGame"] = serialize($narabeGame);
 
 $nexView = "PN201narabeView";
-
-?>

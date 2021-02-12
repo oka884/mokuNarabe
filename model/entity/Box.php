@@ -2,26 +2,42 @@
 /**
  * ボックスのクラス
  *
- * 0・1・2のいずれかの値を保持し、それぞれ オーナーなし・P1・P2 のものとする。
+ * ボックスの値と座標オブジェクトを持つ
  */
-class Box{
+class Box
+{
 
     private $box;
+    private $coordinate;
 
     /**
      * コンストラクタ
      *
+     * @param $columnKey
+     * @param $lineKey
      */
-    public function __construct(){
+    public function __construct( $columnKey, $lineKey )
+    {
         $this->box = 0;
+        $this->coordinate = new Coordinate( $columnKey, $lineKey );
     }
 
     /**
      * 保持している値を返す
      *
      */
-    public function getBox(){
+    public function getBox()
+    {
         return $this->box;
+    }
+
+    /**
+     * 保持している座標オブジェクトを返す
+     *
+     */
+    public function getCoordinate()
+    {
+        return $this->coordinate;
     }
 
 
@@ -31,7 +47,8 @@ class Box{
      * @param $gameSetting $ゲームセッティングオブジェクトを引数に取る
      * @return $カラーコード
      */
-    public function getColor( $gameSetting ){
+    public function getColor( $gameSetting )
+    {
         if( $this->box == 1 ){
             return $gameSetting->getP1Color();
         } elseif( $this->box == 2 ){
@@ -46,11 +63,13 @@ class Box{
      *
      * 1か2が入ってる時htmlにdisabled属性を設定する
      *
-     * @return $disabled属性もしくは空白を返す
+     * @return $cssのdisabled属性もしくは空白を返す
      */
-    public function getNoneCSS(){
+    public function getNoneCSS()
+    {
         if ( $this->box != 0 ){
-            return "disabled=\"disabled\" ";
+            $css = "disabled=\"disabled\" ";
+            return $css;
         } else{
             return "";
         }
@@ -63,14 +82,11 @@ class Box{
      *
      * @param $turn $ターンオブジェクトを引数に与える
      */
-    public function play($turn){
-        if( $turn->whichTurn() ){
-            $this->box = 1;
-        } else {
-            $this->box = 2;
-        }
+    public function play($turn)
+    {
+        $this->box = $turn->whichTurn();
+        
         $turn->turnChanges();
     }
 
 }
-?>
