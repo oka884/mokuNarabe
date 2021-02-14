@@ -26,7 +26,7 @@ class Board{
     /**
      * lineオブジェクトの入ったboard配列を取得する
      *
-     * @return $board配列
+     * @return array $board配列
      */
     public function getBord()
     {
@@ -36,8 +36,8 @@ class Board{
     /**
      * 座標オブジェクトからboxを取得する
      *
-     * @param $coordinate
-     * @return $boxオブジェクト
+     * @param object $coordinate
+     * @return object $boxオブジェクト
      */
     public function getBox( $coordinate )
     {
@@ -47,11 +47,25 @@ class Board{
     }
 
     /**
+     * 座標の値からboxを取得する
+     *
+     * @param int $x
+     * @param int $y
+     * @return object $boxオブジェクト
+     */
+    public function getBoxFromXY( $x, $y )
+    {
+        $line = $this->board[ $y ];
+        $box = $line->getLine()[ $x ];
+        return $box;
+    }
+
+    /**
      * 座標からboxオブジェクトが持つ座標オブジェクトを返す
      * 
      * @param $columnKey
      * @param $lineKey
-     * @return $coordinate
+     * @return object $coordinate
      */
     public function getCoordinate( $columnKey, $lineKey )
     {

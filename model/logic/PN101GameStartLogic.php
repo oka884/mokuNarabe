@@ -19,7 +19,7 @@ if( isset( $_REQUEST["moku"] )){
     $victoryConditions = $_REQUEST["moku"];
 }
 
-// デフォルト値でgameSettingを作り、クライアントからのリクエストはセッターに入れる
+// デフォルト値でgameSettingを作り、クライアントからのリクエストはセッターで入力する
 // これでクライアントから送られた値がおかしくてもデフォルト値でゲームが始まる
 $gameSetting = new GameSetting();
 

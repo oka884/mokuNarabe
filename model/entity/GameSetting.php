@@ -3,7 +3,7 @@
  * ワンゲームごとの設定を保持させる
  *
  * コンストラクタでは引数を取らず、セッターで検査をしながら設定を入力する
- * 行数は長いが単純なセッターとゲッターしかない
+ * 行数は長いがセッターとゲッターしかない
  */
 class GameSetting{
 
@@ -28,6 +28,7 @@ class GameSetting{
      * p1Colorのセッター
      *
      * @param $p1Color
+     * @todo カラーコードと一致するかの検索はColorCodeDefinitionクラスにメソッドを作ったほうがよい
      */
     public function setP1Color( $getP1Color ){
         $p1Color = quotemeta( $getP1Color );
@@ -57,6 +58,7 @@ class GameSetting{
      * p2Colorのセッター
      *
      * @param $p2Color
+     * @todo カラーコードと一致するかの検索はColorCodeDefinitionクラスにメソッドを作ったほうがよい
      */
     public function setP2Color( $getP2Color ){
         $p2Color = quotemeta( $getP2Color );
