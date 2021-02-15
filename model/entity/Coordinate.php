@@ -46,7 +46,7 @@ class Coordinate
     /**
      * 上の座標のboxを返す。上の座標のboxがなければfalseを返す
      *
-     * @param $gameSetting
+     * @param $narabeGame
      * @return object|bool
      * @see GameSetting Board
      */
@@ -55,8 +55,17 @@ class Coordinate
         $nextY = $this->y - 1;
 
         $ok = true;
-        $ok = $nextY >= 0 ? true : false;
-        $ok = $nextY < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
+        while ( $ok ){
+            if ( $nextY < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextY >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            break;
+        }
         if ( $ok ){
             $box = $narabeGame->getBoard()->getBoxFromXY( $this->x, $nextY );
             return $box;
@@ -68,7 +77,7 @@ class Coordinate
     /**
      * 右上の座標のboxを返す。右上の座標のboxがなければfalseを返す
      *
-     * @param $gameSetting
+     * @param $narabeGame
      * @return object|bool
      * @see GameSetting Board
      */
@@ -78,10 +87,25 @@ class Coordinate
         $nextY = $this->y - 1;
 
         $ok = true;
-        $ok = $nextX >= 0 ? true : false;
-        $ok = $nextX < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
-        $ok = $nextY >= 0 ? true : false;
-        $ok = $nextY < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
+        while ( $ok ){
+            if ( $nextX < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextX >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            if ( $nextY < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextY >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            break;
+        }
         if ( $ok ){
             $box = $narabeGame->getBoard()->getBoxFromXY( $nextX, $nextY );
             return $box;
@@ -93,7 +117,7 @@ class Coordinate
     /**
      * 右の座標のboxを返す。右の座標のboxがなければfalseを返す
      *
-     * @param $gameSetting
+     * @param $narabeGame
      * @return object|bool
      * @see GameSetting Board
      */
@@ -102,8 +126,17 @@ class Coordinate
         $nextX = $this->x + 1;
 
         $ok = true;
-        $ok = $nextX >= 0 ? true : false;
-        $ok = $nextX < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
+        while ( $ok ){
+            if ( $nextX < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextX >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            break;
+        }
         if ( $ok ){
             $box = $narabeGame->getBoard()->getBoxFromXY( $nextX, $this->y );
             return $box;
@@ -115,7 +148,7 @@ class Coordinate
     /**
      * 右下の座標のboxを返す。右下の座標のboxがなければfalseを返す
      *
-     * @param $gameSetting
+     * @param $narabeGame
      * @return object|bool
      * @see GameSetting Board
      */
@@ -125,10 +158,25 @@ class Coordinate
         $nextY = $this->y + 1;
 
         $ok = true;
-        $ok = $nextX >= 0 ? true : false;
-        $ok = $nextX < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
-        $ok = $nextY >= 0 ? true : false;
-        $ok = $nextY < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
+        while ( $ok ){
+            if ( $nextX < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextX >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            if ( $nextY < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextY >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            break;
+        }
         if ( $ok ){
             $box = $narabeGame->getBoard()->getBoxFromXY( $nextX, $nextY );
             return $box;
@@ -140,7 +188,7 @@ class Coordinate
     /**
      * 下の座標のboxを返す。下の座標のboxがなければfalseを返す
      *
-     * @param $gameSetting
+     * @param $narabeGame
      * @return object|bool
      * @see GameSetting Board
      */
@@ -149,8 +197,17 @@ class Coordinate
         $nextY = $this->y + 1;
 
         $ok = true;
-        $ok = $nextY >= 0 ? true : false;
-        $ok = $nextY < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
+        while ( $ok ){
+            if ( $nextY < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextY >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            break;
+        }
         if ( $ok ){
             $box = $narabeGame->getBoard()->getBoxFromXY( $this->x, $nextY );
             return $box;
@@ -162,7 +219,7 @@ class Coordinate
     /**
      * 左下の座標のboxを返す。左下の座標のboxがなければfalseを返す
      *
-     * @param $gameSetting
+     * @param $narabeGame
      * @return object|bool
      * @see GameSetting Board
      */
@@ -172,10 +229,25 @@ class Coordinate
         $nextY = $this->y + 1;
 
         $ok = true;
-        $ok = $nextX >= 0 ? true : false;
-        $ok = $nextX < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
-        $ok = $nextY >= 0 ? true : false;
-        $ok = $nextY < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
+        while ( $ok ){
+            if ( $nextX < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextX >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            if ( $nextY < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextY >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            break;
+        }
         if ( $ok ){
             $box = $narabeGame->getBoard()->getBoxFromXY( $nextX, $nextY );
             return $box;
@@ -187,7 +259,7 @@ class Coordinate
     /**
      * 左の座標のboxを返す。左の座標のboxがなければfalseを返す
      *
-     * @param $gameSetting
+     * @param $narabeGame
      * @return object|bool
      * @see GameSetting Board
      */
@@ -196,8 +268,17 @@ class Coordinate
         $nextX = $this->x - 1;
 
         $ok = true;
-        $ok = $nextX >= 0 ? true : false;
-        $ok = $nextX < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
+        while ( $ok ){
+            if ( $nextX < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextX >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            break;
+        }
         if ( $ok ){
             $box = $narabeGame->getBoard()->getBoxFromXY( $nextX, $this->y );
             return $box;
@@ -209,7 +290,7 @@ class Coordinate
     /**
      * 左上の座標のboxを返す。左上の座標のboxがなければfalseを返す
      *
-     * @param $gameSetting
+     * @param $narabeGame
      * @return object|bool
      * @see GameSetting Board
      */
@@ -219,10 +300,25 @@ class Coordinate
         $nextY = $this->y - 1;
 
         $ok = true;
-        $ok = $nextX >= 0 ? true : false;
-        $ok = $nextX < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
-        $ok = $nextY >= 0 ? true : false;
-        $ok = $nextY < $narabeGame->getGameSetting()->getSquareNumber() ? true : false;
+        while ( $ok ){
+            if ( $nextX < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextX >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            if ( $nextY < 0 ){
+                $ok = false;
+                break;
+            }
+            if ( $nextY >= $narabeGame->getGameSetting()->getSquareNumber() ){
+                $ok = false;
+                break;
+            }
+            break;
+        }
         if ( $ok ){
             $box = $narabeGame->getBoard()->getBoxFromXY( $nextX, $nextY );
             return $box;
@@ -234,15 +330,15 @@ class Coordinate
     /**
      * 座標から右上がり斜め直線左端の座標を返す
      *
-     * @param object $gameSetting
+     * @param object $narabeGame
      * @return object $coordinate
      */
-    public function getUpwardLineStartPoint( $gameSetting )
+    public function getUpwardLineStartPoint( $narabeGame )
     {
         $squareNumber = $narabeGame->getGameSetting()->getSquareNumber();
         $board = $narabeGame->getBoard();
 
-        if ( $this->x < $squareNumber && $this->y < $squareNumber ){
+        if ( $this->x + $this->y < $squareNumber ){
             $startY = $this->y + $this->x;
 
             $box = $board->getBoxFromXY( 0, $startY );
@@ -262,12 +358,11 @@ class Coordinate
     /**
      * 座標から右下がり斜め直線左端の座標を返す
      *
-     * @param object $gameSetting
+     * @param object $narabeGame
      * @return object $coordinate
      */
-    public function getDownwardLineStartPoint( $gameSetting )
+    public function getDownwardLineStartPoint( $narabeGame )
     {
-        $squareNumber = $narabeGame->getGameSetting()->getSquareNumber();
         $board = $narabeGame->getBoard();
 
         if ( $this->x >= $this->y ){
@@ -290,14 +385,14 @@ class Coordinate
     /**
      * 座標から水平方向左端の座標を返す
      *
-     * @param object $gameSetting
+     * @param object $narabeGame
      * @return object $coordinate
      */
-    public function getHorizontalLineStartPoint( $gameSetting )
+    public function getHorizontalLineStartPoint( $narabeGame )
     {
         $board = $narabeGame->getBoard();
 
-        $box = $board->getBoxFromXY( $this->x, 0 );
+        $box = $board->getBoxFromXY( 0, $this->y );
         $coordinate = $box->getCoordinate();
 
         return $coordinate;
@@ -306,14 +401,14 @@ class Coordinate
     /**
      * 座標から垂直方向上端の座標を返す
      *
-     * @param object $gameSetting
+     * @param object $narabeGame
      * @return object $coordinate
      */
-    public function getVerticalLineStartPoint( $gameSetting )
+    public function getVerticalLineStartPoint( $narabeGame )
     {
         $board = $narabeGame->getBoard();
 
-        $box = $board->getBoxFromXY( 0, $this->y );
+        $box = $board->getBoxFromXY( $this->x, 0 );
         $coordinate = $box->getCoordinate();
 
         return $coordinate;

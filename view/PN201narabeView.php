@@ -4,7 +4,7 @@
  * PN201narabeView.php
  * n目ならべゲームの画面
  */
-// var_dump($_REQUEST);
+// var_dump($narabePlay->getBoardInspection()->getVerticalLines()[4][2]);
 // echo $requestID;
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
 
 		<div class="board">
 			<?php
-			foreach ($board->getBord() as $lineKey => $line) {
+			foreach ($board->getBoard() as $lineKey => $line) {
 			?>
 				<div class="line">
 					<?php

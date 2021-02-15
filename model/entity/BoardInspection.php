@@ -46,7 +46,7 @@ class BoardInspection
 
         $i = 0;
 
-        while ( $i < $gameSetting->getSqareNumber() ){
+        while ( $i < $gameSetting->getSquareNumber() ){
             $box = $board->getBoxFromXY( $i, 0 );
 
             $this->verticalLines[$i] = array();
@@ -54,7 +54,7 @@ class BoardInspection
 
             do {
                 $coordinate = $box->getCoordinate();
-                $box = $coordinate->getLowerBox();
+                $box = $coordinate->getLowerBox( $narabeGame );
 
                 if ( $box ){
                     $this->verticalLines[$i][] = $box;
@@ -75,14 +75,14 @@ class BoardInspection
     public function setUpwardLines( $narabeGame )
     {
         $gameSetting = $narabeGame->getGameSetting();
-        $sqareNumber = $gameSetting->getSqareNumber();
+        $squareNumber = $gameSetting->getSquareNumber();
         $board = $narabeGame->getBoard();
 
         $yKey = 0;
         $xKey = 1;
         $i = 0;
 
-        while ( $yKey < $sqareNumber ){
+        while ( $yKey < $squareNumber ){
             $box = $board->getBoxFromXY( 0, $yKey );
 
             $this->upwardLines[$i] = array();
@@ -101,8 +101,8 @@ class BoardInspection
             $i++;
         }
 
-        while ( $xKey < $sqareNumber ){
-            $box = $board->getBoxFromXY( $xKey, $sqareNumber - 1 );
+        while ( $xKey < $squareNumber ){
+            $box = $board->getBoxFromXY( $xKey, $squareNumber - 1 );
 
             $this->upwardLines[$i] = array();
             $this->upwardLines[$i][] = $box;
@@ -131,10 +131,10 @@ class BoardInspection
     public function setDownwardLines( $narabeGame )
     {
         $gameSetting = $narabeGame->getGameSetting();
-        $sqareNumber = $gameSetting->getSqareNumber();
+        $squareNumber = $gameSetting->getSquareNumber();
         $board = $narabeGame->getBoard();
 
-        $xKey = $sqareNumber - 1;
+        $xKey = $squareNumber - 1;
         $yKey = 1;
         $i = 0;
 
@@ -157,7 +157,7 @@ class BoardInspection
             $i++;
         }
 
-        while ( $yKey < $sqareNumber ){
+        while ( $yKey < $squareNumber ){
             $box = $board->getBoxFromXY( 0, $yKey );
 
             $this->downwardLines[$i] = array();
@@ -215,8 +215,8 @@ class BoardInspection
      */
     public function getVerticalLineOne( $coordinate )
     {
-        $startCoordinate = $coordinate->getVerticalLineStartPoint();
-        $verticalLine = $this->verticalLines[ $startCoordinate->getX() ];
+        $x = $coordinate->getX();
+        $verticalLine = $this->verticalLines[ $x ];
         return $verticalLine;
     }
 
@@ -224,11 +224,12 @@ class BoardInspection
      * 座標からその座標が含まれる右上がり方向の配列一本を返す
      *
      * @param object $coordinate
+     * @param object $narabeGame
      * @return array
      */
-    public function getUpwardLineOne( $coordinate )
+    public function getUpwardLineOne( $coordinate, $narabeGame )
     {
-        $startCoordinate = $coordinate->getUpwardLineStartPoint();
+        $startCoordinate = $coordinate->getUpwardLineStartPoint( $narabeGame );
         $key = $startCoordinate->getX() + $startCoordinate->getY();
         $upwardLine = $this->upwardLines[ $key ];
 
@@ -239,11 +240,12 @@ class BoardInspection
      * 座標からその座標が含まれる右下がり方向の配列一本を返す
      *
      * @param object $coordinate
+     * @param object $narabeGame
      * @return array
      */
-    public function getDownwardLineOne( $coordinate )
+    public function getDownwardLineOne( $coordinate, $narabeGame )
     {
-        $startCoordinate = $coordinate->getDownwardLineStartPoint();
+        $startCoordinate = $coordinate->getDownwardLineStartPoint( $narabeGame );
         $verticalLastKey = array_key_last( $this->verticalLines );
 
         switch ( $startCoordinate->getY() ){

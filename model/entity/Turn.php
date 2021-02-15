@@ -37,7 +37,7 @@ class Turn{
      * 誰のターンなのかをプレイヤーナンバーで返す
      *
      *
-     * @return $int
+     * @return int
      */
     public function whichTurn(){
         if( $this->count % 2 != 0 ){

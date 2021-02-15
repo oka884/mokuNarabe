@@ -28,7 +28,7 @@ class Board{
      *
      * @return array $board配列
      */
-    public function getBord()
+    public function getBoard()
     {
         return $this->board;
     }
@@ -81,10 +81,10 @@ class Board{
      * @param object $coordinate
      * @return object
      */
-    public function getLine( $coordinate )
+    public function getHorizontalLineOne( $coordinate )
     {
         $y = $coordinate->getY();
-        $line = $this->board[ $y ]->getLine();
+        $line = $this->board[ $y ];
         return $line;
     }
 }

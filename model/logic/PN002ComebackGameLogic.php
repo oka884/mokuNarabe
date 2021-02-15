@@ -6,6 +6,20 @@
  */
 
 
+$narabeGame = unserialize($_SESSION["narabeGame"]);
+
+// narabeGameから中のものを取り出している（省略可能そうな記述）
+$board = $narabeGame->getBoard();
+$turn = $narabeGame->getTurn();
+$gameSetting = $narabeGame->getGameSetting();
+$record = $narabeGame->getRecord();
+
+
+$nexView = "PN201narabeView";
+
+
+
+$_SESSION["narabeGame"] = serialize($narabeGame);
 
 
 ?>

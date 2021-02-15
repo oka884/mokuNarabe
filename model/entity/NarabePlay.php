@@ -21,18 +21,25 @@ class NarabePlay{
         $this->boardInspection->inspectionSetting( $narabeGame );
     }
 
+    /**
+     * boardInspectionを返す
+     * 
+     * @return object BoardInspection
+     */
+    public function getBoardInspection(){
+        return $this->boardInspection;
+    }
+
 
     /**
      * プレイヤーの行動によりboxが保持する値を変える
      *
-     * @param $coordinate $ボックスオブジェクトを引数に与える
+     * @param object $coordinate
      */
     public function ownSquare( $coordinate )
     {
         $box = $this->narabeGame->getBoard()->getBox( $coordinate );
-        $this->box = $this->narabeGame->getTurn()->whoTurn();
-
-        $this->narabeGame->getTurn()->turnChanges();
+        $box->play( $this->narabeGame->getTurn() );
     }
 
     /**
@@ -43,7 +50,8 @@ class NarabePlay{
      */
     public function checkIsEnd()
     {
-        foreach( $this->narabeGame->getBoard()->getBoard() as $line ){
+        $board = $this->narabeGame->getBoard();
+        foreach( $board->getBoard() as $line ){
             foreach( $line->getLine() as $box ){
                 if( $box->getBox() == 0 ){
                     return false;
@@ -90,21 +98,21 @@ class NarabePlay{
         $gameSetting = $this->narabeGame->getGameSetting();
         $board = $this->narabeGame->getBoard();
         $turn = $this->narabeGame->getTurn();
+        $pNumber = $turn->whichTurn();
+        $victoryConditions = $gameSetting->getVictoryConditions();
 
-        $line = $board->getLine( $coordinate );
+        $line = $board->getHorizontalLineOne( $coordinate );
+
+        $winFlag = 0;
 
         foreach ( $line->getLine() as $box ){
-            $winFlag = 0;
 
-            switch ( $box->getBox() ){
-                case $turn->whichTurn() :
-                    $winFlag++ ;
-                    break ;
-                default:
-                    $winFlag = 0;
+            if ( $box->getBox() == $pNumber ){
+                $winFlag++ ;
+            } else {
+                $winFlag = 0;
             }
-
-            if ( $winFlag >= $gameSetting->getVictoryConditions() ){
+            if ( $winFlag >= $victoryConditions ){
                     return true;
             }
         }
@@ -122,20 +130,19 @@ class NarabePlay{
     public function checkVerticalLine( $coordinate ){
         $gameSetting = $this->narabeGame->getGameSetting();
         $turn = $this->narabeGame->getTurn();
+        $pNumber = $turn->whichTurn();
 
         $line = $this->boardInspection->getVerticalLineOne( $coordinate );
 
-        foreach ( $line as $box ){
-            $winFlag = 0;
+        $winFlag = 0;
 
-            switch ( $box->getBox() ){
-                case $turn->whichTurn() :
-                    $winFlag++ ;
-                    break ;
-                default:
-                    $winFlag = 0;
+        foreach ( $line as $box ){    
+
+            if ( $box->getBox() == $pNumber ){
+                $winFlag++ ;
+            } else {
+                $winFlag = 0;
             }
-
             if ( $winFlag >= $gameSetting->getVictoryConditions() ){
                 return true;
             }
@@ -154,14 +161,16 @@ class NarabePlay{
     public function checkUpwardLine( $coordinate ){
         $gameSetting = $this->narabeGame->getGameSetting();
         $turn = $this->narabeGame->getTurn();
+        $pNumber = $turn->whichTurn();
 
-        $line = $this->boardInspection->getUpwardLineOne( $coordinate );
+        $line = $this->boardInspection->getUpwardLineOne( $coordinate, $this->narabeGame );
+
+        $winFlag = 0;
 
         foreach ( $line as $box ){
-            $winFlag = 0;
 
             switch ( $box->getBox() ){
-                case $turn->whichTurn() :
+                case $pNumber :
                     $winFlag++ ;
                     break ;
                 default:
@@ -186,14 +195,16 @@ class NarabePlay{
     public function checkDownwardLine( $coordinate ){
         $gameSetting = $this->narabeGame->getGameSetting();
         $turn = $this->narabeGame->getTurn();
+        $pNumber = $turn->whichTurn();
 
-        $line = $this->boardInspection->getDownwardLineOne( $coordinate );
+        $line = $this->boardInspection->getDownwardLineOne( $coordinate, $this->narabeGame );
+
+        $winFlag = 0;
 
         foreach ( $line as $box ){
-            $winFlag = 0;
 
             switch ( $box->getBox() ){
-                case $turn->whichTurn() :
+                case $pNumber :
                     $winFlag++ ;
                     break ;
                 default:

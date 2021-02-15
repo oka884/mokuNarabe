@@ -23,18 +23,23 @@ $record = $narabeGame->getRecord();
 // プレイヤーの入力を検査し、正しければボックスが持つ座標オブジェクトを返させている
 $coordinate = $narabeGame->checkAndGetCoodinate( $columnKey, $lineKey );
 
+$narabePlay = new NarabePlay( $narabeGame );
+
 // 入力が正しかった時の処理
 while ( $coordinate ){
     $record->addRecord( $coordinate );
 
     $is_win = false;
     $is_end = false;
-    $narabePlay = new NarabePlay( $narabeGame );
+    
     // マスの所有処理
     $narabePlay->ownSquare( $coordinate );
 
     // 勝利判定
     $is_win = $narabePlay->checkIsVictory( $coordinate );
+
+    // 勝利判定が終わったからターン加算処理
+    $turn->turnChanges();
 
     if( $is_win ){
         $nexView = "";
@@ -51,6 +56,7 @@ while ( $coordinate ){
 
     // プレイの継続
     $nexView = "PN201narabeView";
+    break;
 }
 
 // 入力が不正だった時の処理

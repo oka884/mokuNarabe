@@ -81,13 +81,11 @@ class Box
      *
      * ターンオブジェクトを引数に与えることでどちらの手番かを判断させる
      *
-     * @param $turn $ターンオブジェクトを引数に与える
+     * @param object $turn
      */
     public function play($turn)
     {
         $this->box = $turn->whichTurn();
-
-        $turn->turnChanges();
     }
 
 }
