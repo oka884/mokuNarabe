@@ -64,6 +64,8 @@
               <p><input type="submit" value="スタート"></p>
         	</form>
         </div>
+        <br>
+        <p><a href="narabe.php?request=PN999GoTestView">テストページへ</a></p>>
     </div>
 
   </body>

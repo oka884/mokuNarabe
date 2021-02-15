@@ -13,7 +13,7 @@ class Coordinate
 
     /**
      * コンストラクタ
-     * 
+     *
      * @param $columnKey
      * @param $lineKey
      */
@@ -25,7 +25,7 @@ class Coordinate
 
     /**
      * 横軸の座標の値を返す
-     * 
+     *
      * @return int
      */
     public function getX()
@@ -35,7 +35,7 @@ class Coordinate
 
     /**
      * 縦軸の座標をの値を返す
-     * 
+     *
      * @return int
      */
     public function getY()
@@ -45,7 +45,7 @@ class Coordinate
 
     /**
      * 上の座標のboxを返す。上の座標のboxがなければfalseを返す
-     * 
+     *
      * @param $gameSetting
      * @return object|bool
      * @see GameSetting Board
@@ -67,7 +67,7 @@ class Coordinate
 
     /**
      * 右上の座標のboxを返す。右上の座標のboxがなければfalseを返す
-     * 
+     *
      * @param $gameSetting
      * @return object|bool
      * @see GameSetting Board
@@ -92,7 +92,7 @@ class Coordinate
 
     /**
      * 右の座標のboxを返す。右の座標のboxがなければfalseを返す
-     * 
+     *
      * @param $gameSetting
      * @return object|bool
      * @see GameSetting Board
@@ -114,7 +114,7 @@ class Coordinate
 
     /**
      * 右下の座標のboxを返す。右下の座標のboxがなければfalseを返す
-     * 
+     *
      * @param $gameSetting
      * @return object|bool
      * @see GameSetting Board
@@ -139,7 +139,7 @@ class Coordinate
 
     /**
      * 下の座標のboxを返す。下の座標のboxがなければfalseを返す
-     * 
+     *
      * @param $gameSetting
      * @return object|bool
      * @see GameSetting Board
@@ -161,7 +161,7 @@ class Coordinate
 
     /**
      * 左下の座標のboxを返す。左下の座標のboxがなければfalseを返す
-     * 
+     *
      * @param $gameSetting
      * @return object|bool
      * @see GameSetting Board
@@ -186,7 +186,7 @@ class Coordinate
 
     /**
      * 左の座標のboxを返す。左の座標のboxがなければfalseを返す
-     * 
+     *
      * @param $gameSetting
      * @return object|bool
      * @see GameSetting Board
@@ -208,7 +208,7 @@ class Coordinate
 
     /**
      * 左上の座標のboxを返す。左上の座標のboxがなければfalseを返す
-     * 
+     *
      * @param $gameSetting
      * @return object|bool
      * @see GameSetting Board
@@ -232,13 +232,91 @@ class Coordinate
     }
 
     /**
-     * 座標から水平方向左端の座標を返す
-     * 
+     * 座標から右上がり斜め直線左端の座標を返す
+     *
      * @param object $gameSetting
      * @return object $coordinate
      */
-    public function getStartPointHorizontal( $gameSetting )
+    public function getUpwardLineStartPoint( $gameSetting )
     {
-          
+        $squareNumber = $narabeGame->getGameSetting()->getSquareNumber();
+        $board = $narabeGame->getBoard();
+
+        if ( $this->x < $squareNumber && $this->y < $squareNumber ){
+            $startY = $this->y + $this->x;
+
+            $box = $board->getBoxFromXY( 0, $startY );
+            $coordinate = $box->getCoordinate();
+
+            return $coordinate;
+        } else {
+            $startX = $this->x - ( $squareNumber - 1 - $this->y );
+
+            $box = $board->getBoxFromXY( $startX, $squareNumber - 1 );
+            $coordinate = $box->getCoordinate();
+
+            return $coordinate;
+        }
     }
+
+    /**
+     * 座標から右下がり斜め直線左端の座標を返す
+     *
+     * @param object $gameSetting
+     * @return object $coordinate
+     */
+    public function getDownwardLineStartPoint( $gameSetting )
+    {
+        $squareNumber = $narabeGame->getGameSetting()->getSquareNumber();
+        $board = $narabeGame->getBoard();
+
+        if ( $this->x >= $this->y ){
+            $startX = $this->x - $this->y;
+
+            $box = $board->getBoxFromXY( $startX, 0 );
+            $coordinate = $box->getCoordinate();
+
+            return $coordinate;
+        } else {
+            $startY = $this->y - $this->x;
+
+            $box = $board->getBoxFromXY( 0, $startY );
+            $coordinate = $box->getCoordinate();
+
+            return $coordinate;
+        }
+    }
+
+    /**
+     * 座標から水平方向左端の座標を返す
+     *
+     * @param object $gameSetting
+     * @return object $coordinate
+     */
+    public function getHorizontalLineStartPoint( $gameSetting )
+    {
+        $board = $narabeGame->getBoard();
+
+        $box = $board->getBoxFromXY( $this->x, 0 );
+        $coordinate = $box->getCoordinate();
+
+        return $coordinate;
+    }
+
+    /**
+     * 座標から垂直方向上端の座標を返す
+     *
+     * @param object $gameSetting
+     * @return object $coordinate
+     */
+    public function getVerticalLineStartPoint( $gameSetting )
+    {
+        $board = $narabeGame->getBoard();
+
+        $box = $board->getBoxFromXY( 0, $this->y );
+        $coordinate = $box->getCoordinate();
+
+        return $coordinate;
+    }
+
 }

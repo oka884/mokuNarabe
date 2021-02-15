@@ -3,7 +3,7 @@
  * ゲームのクラス
  *
  * gameSetting,board,turn のオブジェクトを保持するクラス
- * 
+ *
  */
 class NarabeGame
 {
@@ -104,47 +104,21 @@ class NarabeGame
         return $this->record;
     }
 
-    /**
-     * 入力された座標を検査しbooleanで返す
-     * 
-     * @param $columnKey
-     * @param $lineKey
-     * @return bool
-     */
-    public function checkCoordinate( $getColumnKey, $getLineKey )
-    {
-        $columnKey = quotemeta( $getColumnKey);
-        $lineKey = quotemeta( $getLineKey );
-
-        $ok = true;
-        $ok = is_numeric( $columnKey );
-        $ok = is_numeric( $lineKey );
-
-        if ( $ok ){
-            $ok = $columnKey >= 0 ? true : false;
-            $ok - $columnKey <= $this->gameSettinig->getSquareNumber() ? true : false;
-        }
-        if ( $ok ){
-            $ok = $lineKey >= 0 ? true : false;
-            $ok = $lineKey <= $this->gameSettinig->getSquareNumber() ? true : false;
-        }
-
-        return $ok;
-    }
 
     /**
      * 入力された座標を検査し、ボックスオブジェクトが持つ座標オブジェクトを返す
-     * 
+     *
      * 入力が不正だった場合はfalseを返す
-     * 
+     *
      * @param $columnKey
      * @param $lineKey
      * @return $coordinate
+     * @see GameSetting Board
      */
     public function checkAndGetCoodinate( $columnKey, $lineKey )
     {
         $ok = true;
-        $ok = $this->checkCoordinate( $columnKey, $lineKey );
+        $ok = $this->gameSettinig->checkCoordinate( $columnKey, $lineKey );
 
         if ( $ok ){
             $coordinate = $this->board->getCoordinate( $columnKey, $lineKey );

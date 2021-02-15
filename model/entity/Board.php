@@ -62,7 +62,7 @@ class Board{
 
     /**
      * 座標からboxオブジェクトが持つ座標オブジェクトを返す
-     * 
+     *
      * @param $columnKey
      * @param $lineKey
      * @return object $coordinate
@@ -73,6 +73,19 @@ class Board{
         $box = $line->getLine()[ $columnKey ];
         $coordinate = $box->getCoordinate();
         return $coordinate;
+    }
+
+    /**
+     * 座標からその座標が含まれる$lineオブジェクトを返す
+     *
+     * @param object $coordinate
+     * @return object
+     */
+    public function getLine( $coordinate )
+    {
+        $y = $coordinate->getY();
+        $line = $this->board[ $y ]->getLine();
+        return $line;
     }
 }
 ?>

@@ -13,7 +13,7 @@ class BoardInspection
 
     /**
      * コンストラクタ
-     * 
+     *
      */
     public function __construct()
     {
@@ -24,7 +24,7 @@ class BoardInspection
 
     /**
      * 検査用の配列をまとめて作るメソッド
-     * 
+     *
      * @param $narabeGame
      */
     public function inspectionSetting( $narabeGame )
@@ -36,7 +36,7 @@ class BoardInspection
 
     /**
      * 垂直方向の配列のセッター
-     * 
+     *
      * @param $narabeGame
      */
     public function setVerticalLines( $narabeGame )
@@ -48,11 +48,11 @@ class BoardInspection
 
         while ( $i < $gameSetting->getSqareNumber() ){
             $box = $board->getBoxFromXY( $i, 0 );
-            
+
             $this->verticalLines[$i] = array();
             $this->verticalLines[$i][] = $box;
-            
-            do {                
+
+            do {
                 $coordinate = $box->getCoordinate();
                 $box = $coordinate->getLowerBox();
 
@@ -67,9 +67,9 @@ class BoardInspection
 
     /**
      * 右上がり斜め配列のセッター
-     * 
+     *
      * 盤面の左上から順に斜め方向を配列にしていくイメージ
-     * 
+     *
      * @param $narabeGame
      */
     public function setUpwardLines( $narabeGame )
@@ -88,7 +88,7 @@ class BoardInspection
             $this->upwardLines[$i] = array();
             $this->upwardLines[$i][] = $box;
 
-            do {                
+            do {
                 $coordinate = $box->getCoordinate();
                 $box = $coordinate->getUpperRightBox( $narabeGame );
 
@@ -107,7 +107,7 @@ class BoardInspection
             $this->upwardLines[$i] = array();
             $this->upwardLines[$i][] = $box;
 
-            do {                
+            do {
                 $coordinate = $box->getCoordinate();
                 $box = $coordinate->getUpperRightBox( $narabeGame );
 
@@ -123,9 +123,9 @@ class BoardInspection
 
     /**
      * 右下がり斜め配列のセッター
-     * 
+     *
      * 盤面の右上から順に配列にしていくイメージ
-     * 
+     *
      * @param $narabeGame
      */
     public function setDownwardLines( $narabeGame )
@@ -144,7 +144,7 @@ class BoardInspection
             $this->downwardLines[$i] = array();
             $this->downwardLines[$i][] = $box;
 
-            do {                
+            do {
                 $coordinate = $box->getCoordinate();
                 $box = $coordinate->getLowerRightBox( $narabeGame );
 
@@ -163,7 +163,7 @@ class BoardInspection
             $this->downwardLines[$i] = array();
             $this->downwardLines[$i][] = $box;
 
-            do {                
+            do {
                 $coordinate = $box->getCoordinate();
                 $box = $coordinate->getLowerRightBox( $narabeGame );
 
@@ -179,7 +179,7 @@ class BoardInspection
 
     /**
      * 垂直方向の配列を返す
-     * 
+     *
      * @return array
      */
     public function getVerticalLines()
@@ -189,7 +189,7 @@ class BoardInspection
 
     /**
      * 右上がり斜め方向の配列を返す
-     * 
+     *
      * @return array
      */
     public function getUpwardLines()
@@ -199,7 +199,7 @@ class BoardInspection
 
     /**
      * 右下がり斜め方向の配列を返す
-     * 
+     *
      * @return array
      */
     public function getDownwardLines()
@@ -207,6 +207,58 @@ class BoardInspection
         return $this->downwardLines;
     }
 
-    
+    /**
+     * 座標からその座標が含まれる垂直方向の配列一本を返す
+     *
+     * @param object $coordinate
+     * @return array
+     */
+    public function getVerticalLineOne( $coordinate )
+    {
+        $startCoordinate = $coordinate->getVerticalLineStartPoint();
+        $verticalLine = $this->verticalLines[ $startCoordinate->getX() ];
+        return $verticalLine;
+    }
+
+    /**
+     * 座標からその座標が含まれる右上がり方向の配列一本を返す
+     *
+     * @param object $coordinate
+     * @return array
+     */
+    public function getUpwardLineOne( $coordinate )
+    {
+        $startCoordinate = $coordinate->getUpwardLineStartPoint();
+        $key = $startCoordinate->getX() + $startCoordinate->getY();
+        $upwardLine = $this->upwardLines[ $key ];
+
+        return $upwardLine;
+    }
+
+    /**
+     * 座標からその座標が含まれる右下がり方向の配列一本を返す
+     *
+     * @param object $coordinate
+     * @return array
+     */
+    public function getDownwardLineOne( $coordinate )
+    {
+        $startCoordinate = $coordinate->getDownwardLineStartPoint();
+        $verticalLastKey = array_key_last( $this->verticalLines );
+
+        switch ( $startCoordinate->getY() ){
+            case 0:
+                $key = $verticalLastKey - $startCoordinate->getX();
+                $downwardLine = $this->downwardLines[ $key ];
+                return $downwardLine;
+                break;
+
+            default:
+                $key = $verticalLastKey + $startCoordinate->getY();
+                $downwardLine = $this->downwardLines[ $key ];
+                return $downwardLine;
+        }
+    }
+
 
 }

@@ -25,6 +25,7 @@ class Box
     /**
      * 保持している値を返す
      *
+     * @return int
      */
     public function getBox()
     {
@@ -85,7 +86,7 @@ class Box
     public function play($turn)
     {
         $this->box = $turn->whichTurn();
-        
+
         $turn->turnChanges();
     }
 

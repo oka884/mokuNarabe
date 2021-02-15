@@ -1,6 +1,6 @@
 <?php
 /**
- * 001SessionNoneLogic.php.php
+ * PN001SessionNoneLogic.php
  *
  * セッション切れの際のロジック
  */

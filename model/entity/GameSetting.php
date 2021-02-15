@@ -95,7 +95,7 @@ class GameSetting{
         $ok = is_numeric( $squareNumber );
         // 盤面の最小最大値の範囲内であることの確認（三項演算子を使っている）
         if( $ok ){
-            $ok = $squareNumber >= DefaultSetting::getMinSquareNumber() ? true : false ; 
+            $ok = $squareNumber >= DefaultSetting::getMinSquareNumber() ? true : false ;
             $ok = $getSquareNumber <= DefaultSetting::getMaxSquareNumber() ? true : false ;
         }
         if( $ok ){
@@ -160,5 +160,35 @@ class GameSetting{
         return $this->victoryConditions;
     }
 
+
+    /**
+     * 指定された座標がゲーム設定の範囲内かをbooleanで返す
+     *
+     * プレイヤーが盤面操作時、入力された座標を検査する目的で利用する
+     *
+     * @param int $columnKey
+     * @param int $lineKey
+     * @return bool
+     */
+    public function checkCoordinate( $getColumnKey, $getLineKey )
+    {
+        $columnKey = quotemeta( $getColumnKey);
+        $lineKey = quotemeta( $getLineKey );
+
+        $ok = true;
+        $ok = is_numeric( $columnKey );
+        $ok = is_numeric( $lineKey );
+
+        if ( $ok ){
+            $ok = $columnKey >= 0 ? true : false;
+            $ok - $columnKey < $this->getSquareNumber() ? true : false;
+        }
+        if ( $ok ){
+            $ok = $lineKey >= 0 ? true : false;
+            $ok = $lineKey < $this->getSquareNumber() ? true : false;
+        }
+
+        return $ok;
+    }
 }
 ?>
