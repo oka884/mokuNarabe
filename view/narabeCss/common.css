@@ -17,3 +17,9 @@ a {
 img {
   width: 100%;
 }
+
+.wrap {
+  width: 80%;
+	max-width: 980px;
+	margin: 0 auto;
+}

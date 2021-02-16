@@ -23,14 +23,13 @@ $record = $narabeGame->getRecord();
 // プレイヤーの入力を検査し、正しければボックスが持つ座標オブジェクトを返させている
 $coordinate = $narabeGame->checkAndGetCoodinate( $columnKey, $lineKey );
 
-$narabePlay = new NarabePlay( $narabeGame );
-
 // 入力が正しかった時の処理
 while ( $coordinate ){
     $record->addRecord( $coordinate );
 
     $is_win = false;
     $is_end = false;
+    $narabePlay = new NarabePlay( $narabeGame );
     
     // マスの所有処理
     $narabePlay->ownSquare( $coordinate );
@@ -42,7 +41,7 @@ while ( $coordinate ){
     $turn->turnChanges();
 
     if( $is_win ){
-        $nexView = "";
+        $nexView = "PN202narabeFinishView";
         break;
     }
 
@@ -50,7 +49,7 @@ while ( $coordinate ){
     $is_end = $narabePlay->checkIsEnd();
 
     if( $is_end ){
-        $nexView = "";
+        $nexView = "PN202narabeFinishView";
         break;
     }
 
@@ -63,6 +62,9 @@ while ( $coordinate ){
 if ( ! $coordinate ){
     $nexView = "PN201narabeView";
 }
+
+// CSSのコントロール用
+require_once ( dirname(__FILE__). "/../view/narabeCss/CssControl.php");
 
 
 $_SESSION["narabeGame"] = serialize($narabeGame);

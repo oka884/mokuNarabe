@@ -14,7 +14,7 @@ $p2Color = "";
 $squareNumber = 0;
 $victoryConditions = 0;
 
-
+$playerName = "";
 
 
 ?>

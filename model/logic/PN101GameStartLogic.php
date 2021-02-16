@@ -35,6 +35,9 @@ $record = new Record();
 $narabeGame = new NarabeGame();
 $narabeGame->setAll( $gameSetting, $board, $turn, $record);
 
+// CSSのコントロール用
+require_once ( dirname(__FILE__). "/../../view/narabeCss/CssControl.php");
+
 $_SESSION["narabeGame"] = serialize($narabeGame);
 
 $nexView = "PN201narabeView";
