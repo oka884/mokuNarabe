@@ -36,18 +36,13 @@ while ( $coordinate ){
 
     // 勝利判定
     $is_win = $narabePlay->checkIsVictory( $coordinate );
-
-    // 勝利判定が終わったからターン加算処理
-    $turn->turnChanges();
-
     if( $is_win ){
         $nexView = "PN202narabeFinishView";
         break;
     }
-
+    
     // 引き分けでの終了判定
     $is_end = $narabePlay->checkIsEnd();
-
     if( $is_end ){
         $nexView = "PN202narabeFinishView";
         break;
@@ -55,6 +50,10 @@ while ( $coordinate ){
 
     // プレイの継続
     $nexView = "PN201narabeView";
+    
+    // ターン加算処理
+    $turn->turnChanges();
+
     break;
 }
 
@@ -64,7 +63,7 @@ if ( ! $coordinate ){
 }
 
 // CSSのコントロール用
-require_once ( dirname(__FILE__). "/../view/narabeCss/CssControl.php");
+require_once ( dirname(__FILE__). "/../../view/narabeCss/CssControl.php");
 
 
 $_SESSION["narabeGame"] = serialize($narabeGame);

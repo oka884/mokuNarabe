@@ -30,7 +30,8 @@
 		<h1 class="title">n目並べ</h1>
 		<div class="playerDisplay">
             <div class="playerDisplayBox">
-                <p><?=$playerName?></p>
+				<p class="turn">Turn</p>
+                <p class="playerName"><?=$playerName?></p>
             </div>
         </div>
 		<!-- ここから盤面 -->

@@ -21,7 +21,8 @@
 		<h1 class="title">n目並べ</h1>
         <div class="playerDisplay">
             <div class="playerDisplayBox">
-                <p><?=$playerName?></p>
+				<p class="turn">Turn</p>
+                <p class="playerName"><?=$playerName?></p>
             </div>
         </div>
         <!-- ここから盤面 -->
@@ -35,6 +36,7 @@
 					?>
 						<div class="box" style="background-color:<?= $box->getColor($gameSetting); ?> ;">
 							<!-- ここがbox -->
+							<p>　</p>
 						</div>
 					<?php
 					}
@@ -43,6 +45,8 @@
 			<?php
 			}
 			?>
+			<p class="winPlayerName"><?=$playerName?></p>
+			<p class="win">WIN</p>
 		</div>
 		<div>
 			<form action="narabe.php" method="get">
