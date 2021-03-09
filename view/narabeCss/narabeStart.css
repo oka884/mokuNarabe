@@ -1,11 +1,20 @@
 @charset "UTF-8";
 
 .cover {
-	width: 8rem;
+	width: 40%;
+	min-width: 8rem;
 	height: 6rem;
-	margin: 5rem auto;
-	justify-content: center;
-	align-items: center;
+	margin: 4rem auto;
+	display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+	-webkit-flex-direction: column;
+  flex-direction: column;
+	background-color: #ccc;
+	border-radius: 0.5rem;
 }
 
 .title {
@@ -14,5 +23,70 @@
 
 
 .narabeForm{
-	justify-content: center;
+	width: 100%;
+	display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+	-webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.narabeSelect{
+	width: 100%;
+	display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+	-webkit-align-items: center;
+  align-items: center;
+	-webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.selectSection{
+	width: 14rem;
+	margin-bottom: 1rem;
+	display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+	-webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.numberSelectSection{
+	width: 100%;
+	margin-bottom: 0.5rem;
+	display: -webkit-flex;
+  display: flex;
+	-webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.colorSelectSection{
+	width: 100%;
+	margin-bottom: 0.5rem;
+	display: -webkit-flex;
+  display: flex;
+	-webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.submitBotton p{
+	text-align: center;
+}
+
+.submitBotton input{
+	padding: 1rem 4rem;
+	position: relative;
+  display: inline-block;
+	line-height: 1.5;
+	text-align: center;
+	vertical-align: middle;
+	border: 3px solid #000;
+	border-radius: 0.5rem;
+	cursor: pointer;
 }
