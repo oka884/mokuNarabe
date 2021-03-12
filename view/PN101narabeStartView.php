@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="../view/narabeCss/reset.css" type="text/css">
   <link rel="stylesheet" href="../view/narabeCss/common.css" type="text/css">
   <link rel="stylesheet" href="../view/narabeCss/narabeStart.css" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -52,24 +54,24 @@
               </select>
             </div>
           </div>
-          <!-- 色を選択できる機能。不完全 -->
+          <!-- 色を選択できる機能。カラー被りが起こる点が不完全 -->
           <div class="selectSection">
             <div class="colorSelectSection">
               <p>1Pカラー</p>
               <select name="p1Color">
-                <option value="c01" selected>青</option>
-                <option value="c02">赤</option>
-                <option value="c03">緑</option>
-                <option value="c04">黄</option>
+                <option value="c01" selected> 青</option>
+                <option value="c02"> 赤</option>
+                <option value="c03"> 緑</option>
+                <option value="c04"> 黄</option>
               </select>
             </div>
             <div class="colorSelectSection">
               <p>2Pカラー</p>
               <select name="p2Color">
-                <option value="c01">青</option>
-                <option value="c02" selected>赤</option>
-                <option value="c03">緑</option>
-                <option value="c04">黃</option>
+                <option value="c01"> 青</option>
+                <option value="c02" selected> 赤</option>
+                <option value="c03"> 緑</option>
+                <option value="c04"> 黃</option>
               </select>
             </div>
           </div>
