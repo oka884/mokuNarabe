@@ -21,7 +21,14 @@
 .playerName{
 	<?=$positionAbsolute?>: 4%;
 }
+
+.boardWrap{
+	max-width: calc( <?=$gameSetting->getSquareNumber()?> * 5.1rem + 2rem );
+	max-height: calc( <?=$gameSetting->getSquareNumber()?> * 5.1rem + 2rem );
+}
+
+
 .box {
 	width: calc( <?=$boxSize?>% - 0.4rem );
-	height: calc( ( 70vw / <?=$gameSetting->getSquareNumber()?> ) - 0.4rem );
+	padding-top: calc( <?=$boxSize?>% - 0.4rem );
 }

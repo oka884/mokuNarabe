@@ -80,7 +80,7 @@
       </form>
     </div>
     <br>
-    <p><a href="narabe.php?request=PN999GoTestView">テストページへ</a></p>
+    <!-- <p><a href="narabe.php?request=PN999GoTestView">テストページへ</a></p> -->
   </div>
 
 </body>

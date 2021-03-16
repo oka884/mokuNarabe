@@ -7,7 +7,8 @@ body {
   line-height: 1 ;
   width: 100%;
   background-color: #fff;
-  /* font-family: 'Sawarabi Mincho', serif; */
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-size: 1.2rem;
 }
 
 a {
@@ -22,4 +23,10 @@ img {
   width: 80%;
 	max-width: 980px;
 	margin: 0 auto;
+}
+
+@media screen and ( max-width: 768px )  {
+	.wrap{
+		width: 100%;
+	}
 }

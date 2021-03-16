@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 .wrap{
-	font-family: 'M PLUS Rounded 1c', sans-serif;
 	font-size: 1.2rem;
 }
 
@@ -53,7 +52,7 @@
 }
 
 .selectSection{
-	width: 14rem;
+	width: 15rem;
 	margin-bottom: 1rem;
 	display: -webkit-flex;
   display: flex;
@@ -84,7 +83,7 @@
 }
 
 .selectSection select{
-	width: 4.8rem;
+	width: 5.1rem;
 	position: relative;
 	text-indent: 0.2rem;
 	font-size: 1.1rem;
@@ -102,8 +101,8 @@ font-family: 'RocknRoll One', sans-serif;
 font-family: 'Sigmar One', cursive; 
 */
 
-
 .submitBotton{
+	position: relative;
 	text-align: center;
 	font-size: 1.2rem;
 	font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -111,11 +110,6 @@ font-family: 'Sigmar One', cursive;
 
 .submitBotton p{
  width: 50%;
-}
-
-
-.submitBotton{
-	position: relative;
 }
 
 .submitBotton input{
@@ -130,13 +124,5 @@ font-family: 'Sigmar One', cursive;
 	border-radius: 0.5rem;
 	cursor: pointer;
 	background-color: transparent;
-	filter: drop-shadow(0.5rem 0.5rem 0 #eee);
-}
-
-@media screen and (min-width:480px) { 
-	/*　画面サイズが480pxからはここを読み込む　*/
-	.wrap{
-		width: 100%;
-	}
-
+	filter: drop-shadow(0.2rem 0.2rem 0 #eee);
 }

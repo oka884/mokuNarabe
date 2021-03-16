@@ -14,6 +14,9 @@
 	<link rel="stylesheet" href="../view/narabeCss/reset.css" type="text/css">
 	<link rel="stylesheet" href="../view/narabeCss/common.css" type="text/css">
 	<link rel="stylesheet" href="../view/narabeCss/narabe.css" type="text/css">
+	<style type="text/css">
+		<?php require_once(dirname(__FILE__) . "/../view/narabeCss/narabeCss.php"); ?>
+	</style>
 </head>
 
 <body>
@@ -26,25 +29,26 @@
             </div>
         </div>
         <!-- ここから盤面 -->
-		<div class="board">
-			<?php
-			foreach ($board->getBoard() as $lineKey => $line) {
-			?>
-				<div class="line">
-					<?php
-					foreach ($line->getLine() as $columnKey => $box) {
-					?>
-						<div class="box" style="background-color:<?= $box->getColor($gameSetting); ?> ;">
-							<!-- ここがbox -->
-							<p>　</p>
-						</div>
-					<?php
-					}
-					?>
-				</div>
-			<?php
-			}
-			?>
+		<div class="boardWrap">
+			<div class="board">
+				<?php
+				foreach ($board->getBoard() as $lineKey => $line) {
+				?>
+					<div class="line">
+						<?php
+						foreach ($line->getLine() as $columnKey => $box) {
+						?>
+							<div class="box" style="background-color:<?= $box->getColor($gameSetting); ?> ;">
+								<p>　</p>
+							</div>
+						<?php
+						}
+						?>
+					</div>
+				<?php
+				}
+				?>
+			</div>
 			<p class="winPlayerName"><?=$playerName?></p>
 			<p class="win">WIN</p>
 		</div>
