@@ -15,6 +15,8 @@
 	<link rel="stylesheet" href="../view/narabeCss/reset.css" type="text/css">
 	<link rel="stylesheet" href="../view/narabeCss/common.css" type="text/css">
 	<link rel="stylesheet" href="../view/narabeCss/narabe.css" type="text/css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=M+PLUS+Rounded+1c&family=Ranchers&display=swap" rel="stylesheet">
 	<style type="text/css">
 		<?php require_once(dirname(__FILE__) . "/../view/narabeCss/narabeCss.php"); ?>
 	</style>
@@ -27,7 +29,7 @@
 
 <body>
 	<div class="wrap">
-		<h1 class="title">n目並べ</h1>
+		<h1 class="title"><?= $gameSetting->getVictoryConditions() ?>目並べ</h1>
 		<div class="playerDisplay">
 			<div class="playerDisplayBox">
 				<p class="turn">Turn</p>

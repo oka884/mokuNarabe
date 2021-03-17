@@ -9,6 +9,8 @@ class GameSetting{
 
     private $p1Color;
     private $p2Color;
+    private $p1AccentColor;
+    private $p2AccentColor;
     private $squareNumber;
     private $victoryConditions;
 
@@ -20,6 +22,8 @@ class GameSetting{
     public function __construct(){
         $this->p1Color = DefaultSetting::getP1Color();
         $this->p2Color = DefaultSetting::getP2Color();
+        $this->p1AccentColor = DefaultSetting::getP1AccentColor();
+        $this->p2AccentColor = DefaultSetting::getP2AccentColor();
         $this->squareNumber = DefaultSetting::getSquareNumber();
         $this->victoryConditions = DefaultSetting::getVictoryConditions();
     }
@@ -33,12 +37,14 @@ class GameSetting{
     public function setP1Color( $getP1Color ){
         $p1Color = quotemeta( $getP1Color );
         $hexP1Color = "";
+        $hexP1AccentColor = "";
         $ok = true;
         // カラーコード設定を回し、一致するものがあればその16進数コードを代入する
         if( $ok ){
             foreach ( ColorCodeDefinition::getLocalColorCode() as $key => $value ){
                 if( $p1Color == $value ){
                     $hexP1Color = ColorCodeDefinition::getHexColorCode()[$key];
+                    $hexP1AccentColor = ColorCodeDefinition::getHexAccentColorCode()[$key];
                     $ok = true;
                     break;
                 }else{
@@ -48,6 +54,7 @@ class GameSetting{
         }
         if( $ok ){
             $this->p1Color = $hexP1Color;
+            $this->p1AccentColor = $hexP1AccentColor;
             return true;
         }else {
             return false;
@@ -63,12 +70,14 @@ class GameSetting{
     public function setP2Color( $getP2Color ){
         $p2Color = quotemeta( $getP2Color );
         $hexP2Color = "";
+        $hexP2AccentColor = "";
         $ok = true;
         // カラーコード設定を回し、一致するものがあればその16進数コードを代入する
         if( $ok ){
             foreach ( ColorCodeDefinition::getLocalColorCode() as $key => $value ){
                 if( $p2Color == $value ){
                     $hexP2Color = ColorCodeDefinition::getHexColorCode()[$key];
+                    $hexP2AccentColor = ColorCodeDefinition::getHexAccentColorCode()[$key];
                     $ok = true;
                     break;
                 }else{
@@ -78,6 +87,7 @@ class GameSetting{
         }
         if( $ok ){
             $this->p2Color = $hexP2Color;
+            $this->p2AccentColor = $hexP2AccentColor;
             return true;
         }else {
             return false;
@@ -142,6 +152,20 @@ class GameSetting{
      */
     public function getP2Color(){
         return $this->p2Color;
+    }
+
+    /**
+     * p1AccentColorを返す
+     */
+    public function getP1AccentColor(){
+        return $this->p1AccentColor;
+    }
+
+    /**
+     * p2AccentColorを返す
+     */
+    public function getP2AccentColor(){
+        return $this->p2AccentColor;
     }
 
     /**

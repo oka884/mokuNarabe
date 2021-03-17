@@ -32,3 +32,7 @@
 	width: calc( <?=$boxSize?>% - 0.4rem );
 	padding-top: calc( <?=$boxSize?>% - 0.4rem );
 }
+
+.winPlayerName{
+  color: <?=$playerDisplayBoxColor?>;
+}

@@ -10,6 +10,8 @@ class DefaultSetting{
     protected static $notOwnedColor = "#ccc";
     protected static $defaultP1Color = "#4169e1";
     protected static $defaultP2Color = "#ff6347";
+    protected static $defaultP1AccentColor = "#000080";
+    protected static $defaultP2AccentColor = "#ff0000";
     // 盤面のデフォルト値と最小最大値、勝利条件のデフォルト値と最小最大値
     protected static $defaultSquareNumber = 5;
     protected static $defaultVictoryConditions = 3;
@@ -28,6 +30,14 @@ class DefaultSetting{
 
     public static function getP2Color(){
         return self::$defaultP2Color;
+    }
+
+    public static function getP1AccentColor(){
+        return self::$defaultP1AccentColor;
+    }
+
+    public static function getP2AccentColor(){
+        return self::$defaultP2AccentColor;
     }
 
     public static function getSquareNumber(){

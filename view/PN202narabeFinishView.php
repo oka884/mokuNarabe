@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="../view/narabeCss/reset.css" type="text/css">
 	<link rel="stylesheet" href="../view/narabeCss/common.css" type="text/css">
 	<link rel="stylesheet" href="../view/narabeCss/narabe.css" type="text/css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=M+PLUS+Rounded+1c&family=Ranchers&display=swap" rel="stylesheet">
 	<style type="text/css">
 		<?php require_once(dirname(__FILE__) . "/../view/narabeCss/narabeCss.php"); ?>
 	</style>
@@ -21,14 +23,14 @@
 
 <body>
 	<div class="wrap">
-		<h1 class="title">n目並べ</h1>
-        <div class="playerDisplay">
-            <div class="playerDisplayBox">
+		<h1 class="title"><?= $gameSetting->getVictoryConditions() ?>目並べ</h1>
+		<div class="playerDisplay">
+			<div class="playerDisplayBox">
 				<p class="turn">Turn</p>
-                <p class="playerName"><?=$playerName?></p>
-            </div>
-        </div>
-        <!-- ここから盤面 -->
+				<p class="playerName"><?= $playerName ?></p>
+			</div>
+		</div>
+		<!-- ここから盤面 -->
 		<div class="boardWrap">
 			<div class="board">
 				<?php
@@ -49,13 +51,15 @@
 				}
 				?>
 			</div>
-			<p class="winPlayerName"><?=$playerName?></p>
-			<p class="win">WIN</p>
+			<div class="winDisplay">
+				<p class="winPlayerName"><?= $playerName ?></p>
+				<p class="win">WIN</p>
+			</div>
 		</div>
-		<div>
+		<div class="buttoSection">
 			<form action="narabe.php" method="get">
 				<input type="hidden" name="request" value="PN201BoardReset">
-				<p><input type="submit" value="ゲームをやめる"></p>
+				<p class="submitBotton"><input class="submitBotton" type="submit" value="ゲームをやめる"></p>
 			</form>
 		</div>
 
