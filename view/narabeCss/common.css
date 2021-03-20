@@ -20,13 +20,14 @@ img {
 }
 
 .wrap {
-  width: 80%;
-	max-width: 980px;
+  width: 100%;
 	margin: 0 auto;
 }
 
-@media screen and ( max-width: 768px )  {
+/* PC向けのメディアクエリ */
+@media screen and ( min-width: 769px ) {
 	.wrap{
-		width: 100%;
+    width: 80%;
+  	max-width: 980px;
 	}
 }

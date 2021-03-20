@@ -5,7 +5,7 @@
 }
 
 .cover {
-	width: 40%;
+	width: 70%;
 	min-width: 12rem;
 	height: 10vw;
 	min-height: 6rem;
@@ -21,6 +21,13 @@
   flex-direction: column;
 	background-color: #ccc;
 	border-radius: 0.5rem;
+}
+
+/* PC向けのメディアクエリ */
+@media screen and ( min-width: 769px ) {
+	.cover{
+    width: 40%;
+	}
 }
 
 .title {
