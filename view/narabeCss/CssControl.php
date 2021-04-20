@@ -24,7 +24,7 @@ switch ( $turn->whichTurn() ){
 		$textAlign = "start";
 		$playerDisplayBoxColor = $gameSetting->getP1Color();
 		$clipPath = "0 0, 100% 0, 80% 100%, 0 100%";
-		$boxBorder = "border-left: solid 0.6rem #000080";
+		$boxBorder = "border-left: solid 0.6rem " . $gameSetting->getP1AccentColor();
 		$positionAbsolute = "left";
 		$transformRotate = "-10deg";
 		break;
@@ -34,7 +34,7 @@ switch ( $turn->whichTurn() ){
 		$textAlign = "end";
 		$playerDisplayBoxColor = $gameSetting->getP2Color();
 		$clipPath = "0 0, 100% 0, 100% 100%, 20% 100%";
-		$boxBorder = "border-right: solid 0.6rem #ff0000";
+		$boxBorder = "border-right: solid 0.6rem " . $gameSetting->getP2AccentColor();
 		$positionAbsolute = "right";
 		$transformRotate = "10deg";
 		break;

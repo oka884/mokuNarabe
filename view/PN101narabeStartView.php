@@ -13,6 +13,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="../view/narabeCss/reset.css" type="text/css">
   <link rel="stylesheet" href="../view/narabeCss/common.css" type="text/css">
   <link rel="stylesheet" href="../view/narabeCss/narabeStart.css" type="text/css">
