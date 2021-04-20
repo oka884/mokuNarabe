@@ -69,7 +69,7 @@ class Box
     public function getNoneCSS()
     {
         if ( $this->box != 0 ){
-            $css = "disabled=\"disabled\" ";
+            $css = "style=pointer-events:none; ";
             return $css;
         } else{
             return "";
